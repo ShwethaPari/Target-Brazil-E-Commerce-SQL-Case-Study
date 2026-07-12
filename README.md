@@ -82,8 +82,9 @@ The dataset models a typical e-commerce backend with separate tables for custome
     max(order_purchase_timestamp) as end_time
   from `target-500311.Target_Sql.orders`;
   ```
-  
-  ![Time Range Activity](PASTE_SCREENSHOT_LINK_HERE)
+
+  <img width="1451" height="443" alt="Screenshot 2026-07-12 162212" src="https://github.com/user-attachments/assets/256dd7a2-b050-410a-8269-e19ed0bd0dc4" />
+
 </details>
 
 <details>
@@ -101,7 +102,9 @@ The dataset models a typical e-commerce backend with separate tables for custome
   WHERE EXTRACT(YEAR FROM o.order_purchase_timestamp) = 2018;
   ```
   
-  ![Customer Cities and States 2018](PASTE_SCREENSHOT_LINK_HERE)
+
+<img width="1458" height="510" alt="Screenshot 2026-07-12 162304" src="https://github.com/user-attachments/assets/c9c72c87-0158-4a2b-a635-b63c03f8f546" />
+
 </details>
 
 <details>
