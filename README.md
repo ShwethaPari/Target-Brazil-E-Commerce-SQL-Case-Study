@@ -48,7 +48,7 @@ The dataset models a typical e-commerce backend with separate tables for custome
 ---
 
 ## 🔍 Analysis Performed & SQL Queries
-*Click on any business question below to view the SQL implementation query logic and placeholder for your screenshot.*
+*Click on any business question below to view the SQL implementation query logic and execution results.*
 
 <details>
   <summary><b>1. Initial data exploration of customers and geolocation tables</b></summary>
@@ -65,7 +65,7 @@ The dataset models a typical e-commerce backend with separate tables for custome
   from `target-500311.Target_Sql.geolocation` 
   limit 5;
   ```
-  *(Drop your screenshot for Question 1 here)*
+  ![Initial Data Exploration](screenshots/initial_data_exploration.png)
 </details>
 
 <details>
@@ -79,7 +79,7 @@ The dataset models a typical e-commerce backend with separate tables for custome
     max(order_purchase_timestamp) as end_time
   from `target-500311.Target_Sql.orders`;
   ```
-  *(Drop your screenshot for Question 2 here)*
+  ![Time Range Activity](screenshots/time_range_activity.png)
 </details>
 
 <details>
@@ -96,7 +96,7 @@ The dataset models a typical e-commerce backend with separate tables for custome
     ON o.customer_id = c.customer_id
   WHERE EXTRACT(YEAR FROM o.order_purchase_timestamp) = 2018;
   ```
-  *(Drop your screenshot for Question 3 here)*
+  ![Customer Cities and States 2018](screenshots/customer_cities_states_2018.png)
 </details>
 
 <details>
@@ -111,7 +111,7 @@ The dataset models a typical e-commerce backend with separate tables for custome
   GROUP BY EXTRACT(hour from order_purchase_timestamp)
   ORDER BY order_num desc;
   ```
-  *(Drop your screenshot for Question 4 here)*
+  ![Peak Order Hours](screenshots/peak_order_hours.png)
 </details>
 
 <details>
@@ -135,7 +135,7 @@ The dataset models a typical e-commerce backend with separate tables for custome
   FROM `target-500311.Target_Sql.orders`
   GROUP BY year, month;
   ```
-  *(Drop your screenshot for Question 5 here)*
+  ![Month on Month Growth Trend](screenshots/month_on_month_chronological.png)
 </details>
 
 <details>
@@ -143,9 +143,14 @@ The dataset models a typical e-commerce backend with separate tables for custome
   <br>
   
   ```sql
-  -- Paste your SQL query here
+  -- Distribution of customers across the state of brazil
+  SELECT customer_city, customer_state,
+  COUNT(DISTINCT customer_id) as customer_count
+  FROM `target-500311.Target_Sql.customers`
+  GROUP BY customer_city, customer_state
+  ORDER BY customer_count DESC;
   ```
-  *(Drop your screenshot for Question 6 here)*
+  ![Customer Distribution Across States](screenshots/customer_distribution_states.png)
 </details>
 
 <details>
@@ -153,9 +158,13 @@ The dataset models a typical e-commerce backend with separate tables for custome
   <br>
   
   ```sql
-  -- Paste your SQL query here
+  -- Calculate days between purchasing, deliveries and estimated delivery
+  select
+  date_diff(date(order_delivered_customer_date),date(order_purchase_timestamp),day)as days_to_delivery,
+  date_diff(date(order_delivered_customer_date),date(order_estimated_delivery_date),day)as diff_estimated_delivery
+  from `target-500311.Target_Sql.orders`;
   ```
-  *(Drop your screenshot for Question 7 here)*
+  ![Delivery Performance Metrics](screenshots/delivery_performance.png)
 </details>
 
 <details>
@@ -163,9 +172,18 @@ The dataset models a typical e-commerce backend with separate tables for custome
   <br>
   
   ```sql
-  -- Paste your SQL query here
+  -- Find out the top 5 states with highest & lowest average freight value
+  select c.customer_state,
+  avg(freight_value)as avg_freight_value
+  from `target-500311.Target_Sql.orders` as o
+  join `target-500311.Target_Sql.orders_items` as oi
+    on o.order_id = oi.order_id
+  join `target-500311.Target_Sql.customers` as c
+    on o.customer_id = c.customer_id
+  group by c.customer_state
+  order by avg_freight_value desc;
   ```
-  *(Drop your screenshot for Question 8 here)*
+  ![Average Freight Value by Region](screenshots/average_freight_value.png)
 </details>
 
 <details>
@@ -173,9 +191,19 @@ The dataset models a typical e-commerce backend with separate tables for custome
   <br>
   
   ```sql
-  -- Paste your SQL query here
+  -- Find out the top 5 states with the lowest average delivery time.
+  select
+  c.customer_state,
+  avg(extract(date from o.order_delivered_customer_date)-extract(date from o.order_purchase_timestamp))as avg_time_to_delivery
+  from `target-500311.Target_Sql.orders`as o
+  join `target-500311.Target_Sql.orders_items`as oi
+    on o.order_id = oi.order_id
+  join `target-500311.Target_Sql.customers`as c
+    on o.customer_id = c.customer_id
+  group by c.customer_state
+  order by avg_time_to_delivery asc;
   ```
-  *(Drop your screenshot for Question 9 here)*
+  ![Average Delivery Time Analysis](screenshots/average_delivery_time.png)
 </details>
 
 <details>
@@ -183,9 +211,13 @@ The dataset models a typical e-commerce backend with separate tables for custome
   <br>
   
   ```sql
-  -- Paste your SQL query here
+  -- count of orders based on the number of payment installments.
+  select payment_installments,
+  count(distinct order_id) as num_orders
+  from `target-500311.Target_Sql.payments`
+  group by payment_installments;
   ```
-  *(Drop your screenshot for Question 10 here)*
+  ![Order Count by Payment Installments](screenshots/payment_installments.png)
 </details>
 
 <details>
@@ -193,9 +225,18 @@ The dataset models a typical e-commerce backend with separate tables for custome
   <br>
   
   ```sql
-  -- Paste your SQL query here
+  select
+  payment_type,
+  extract(year from order_purchase_timestamp)as year,
+  extract(month from order_purchase_timestamp)as month,
+  count(distinct o.order_id)as order_count
+  from `target-500311.Target_Sql.orders`as o
+  inner join `target-500311.Target_Sql.payments`as p
+  on o.order_id = p.order_id
+  group by payment_type,year,month
+  order by payment_type,year,month;
   ```
-  *(Drop your screenshot for Question 11 here)*
+  ![Payment Type Distribution and Trends](screenshots/payment_type_trends.png)
 </details>
 
 ---
@@ -209,25 +250,3 @@ The dataset models a typical e-commerce backend with separate tables for custome
 * Order volume was near zero in the first month (Sep 2016: 4 orders) and ramped up sharply the following month (Oct 2016: 324 orders), indicating the platform was in an early growth/launch phase during late 2016.
 
 ### 📌 3. Peak Ordering Hours
-* The busiest hours for placing orders were **4 PM** (6,675 orders), **11 AM** (6,578 orders), and **2 PM** (6,569 orders) — customers are most active in the afternoon.
-
-### 📌 4. Customer Geographic Concentration
-* **São Paulo (SP)** is by far the largest customer base with 15,540 unique customers, followed by Rio de Janeiro (RJ) with 6,882 and Belo Horizonte (MG) with 2,773.
-* Customers who ordered in 2018 were overwhelmingly based in São Paulo, SP, confirming SP as the core, most consistent market.
-
-### 📌 5. Delivery Performance
-* Actual delivery times vary widely (e.g., 30–36 days for some orders).
-* The gap between actual and estimated delivery dates shows mixed reliability — some orders arrived well ahead of schedule (up to 12 days early) while others were significantly late (up to 29 days late), signaling inconsistent logistics performance.
-* **São Paulo (SP)** has the fastest average delivery time among states, at roughly 8 days 16 hours.
-
-### 📌 6. Freight Cost by Region
-* The states with the highest average freight value are remote/less-populated regions: **RR (~₹42.98)**, **PB (~₹42.72)**, and **RO (~₹41.07)** — confirming that distance from major distribution hubs drives up shipping cost.
-
-### 📌 7. Payment Behavior
-* The vast majority of orders are paid in a single installment (**49,060 orders**), with a much smaller share split into 2 installments (12,389 orders) — most customers prefer to pay in full upfront.
-* Alternative payment types (e.g., UPI) appear in low volumes early on (63 orders in Oct 2016), suggesting limited early adoption of non-standard payment methods.
-
----
-
-## 💡 Summary Insight
-São Paulo dominates both the customer base and order volume, delivery reliability is inconsistent enough to warrant logistics review, freight costs scale with regional remoteness, and one-time full payment is the overwhelmingly preferred payment behavior.
