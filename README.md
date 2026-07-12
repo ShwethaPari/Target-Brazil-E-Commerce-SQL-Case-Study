@@ -48,7 +48,7 @@ The dataset models a typical e-commerce backend with separate tables for custome
 ---
 
 ## 🔍 Analysis Performed & SQL Queries
-*Click on any business question below to view the SQL implementation query logic.*
+*Click on any business question below to view the SQL implementation query logic and execution results.*
 
 <details>
   <summary><b>1. Initial data exploration of customers and geolocation tables</b></summary>
@@ -65,6 +65,8 @@ The dataset models a typical e-commerce backend with separate tables for custome
   from `target-500311.Target_Sql.geolocation` 
   limit 5;
   ```
+  
+  ![Initial Data Exploration](PASTE_SCREENSHOT_LINK_HERE)
 </details>
 
 <details>
@@ -78,6 +80,8 @@ The dataset models a typical e-commerce backend with separate tables for custome
     max(order_purchase_timestamp) as end_time
   from `target-500311.Target_Sql.orders`;
   ```
+  
+  ![Time Range Activity](PASTE_SCREENSHOT_LINK_HERE)
 </details>
 
 <details>
@@ -94,6 +98,8 @@ The dataset models a typical e-commerce backend with separate tables for custome
     ON o.customer_id = c.customer_id
   WHERE EXTRACT(YEAR FROM o.order_purchase_timestamp) = 2018;
   ```
+  
+  ![Customer Cities and States 2018](PASTE_SCREENSHOT_LINK_HERE)
 </details>
 
 <details>
@@ -108,6 +114,8 @@ The dataset models a typical e-commerce backend with separate tables for custome
   GROUP BY EXTRACT(hour from order_purchase_timestamp)
   ORDER BY order_num desc;
   ```
+  
+  ![Peak Order Hours](PASTE_SCREENSHOT_LINK_HERE)
 </details>
 
 <details>
@@ -131,6 +139,8 @@ The dataset models a typical e-commerce backend with separate tables for custome
   FROM `target-500311.Target_Sql.orders`
   GROUP BY year, month;
   ```
+  
+  ![Month on Month Growth Trend](PASTE_SCREENSHOT_LINK_HERE)
 </details>
 
 <details>
@@ -145,6 +155,8 @@ The dataset models a typical e-commerce backend with separate tables for custome
   GROUP BY customer_city, customer_state
   ORDER BY customer_count DESC;
   ```
+  
+  ![Customer Distribution Across States](PASTE_SCREENSHOT_LINK_HERE)
 </details>
 
 <details>
@@ -158,6 +170,8 @@ The dataset models a typical e-commerce backend with separate tables for custome
   date_diff(date(order_delivered_customer_date),date(order_estimated_delivery_date),day)as diff_estimated_delivery
   from `target-500311.Target_Sql.orders`;
   ```
+  
+  ![Delivery Performance Metrics](PASTE_SCREENSHOT_LINK_HERE)
 </details>
 
 <details>
@@ -176,6 +190,8 @@ The dataset models a typical e-commerce backend with separate tables for custome
   group by c.customer_state
   order by avg_freight_value desc;
   ```
+  
+  ![Average Freight Value by Region](PASTE_SCREENSHOT_LINK_HERE)
 </details>
 
 <details>
@@ -195,6 +211,8 @@ The dataset models a typical e-commerce backend with separate tables for custome
   group by c.customer_state
   order by avg_time_to_delivery asc;
   ```
+  
+  ![Average Delivery Time Analysis](PASTE_SCREENSHOT_LINK_HERE)
 </details>
 
 <details>
@@ -208,6 +226,8 @@ The dataset models a typical e-commerce backend with separate tables for custome
   from `target-500311.Target_Sql.payments`
   group by payment_installments;
   ```
+  
+  ![Order Count by Payment Installments](PASTE_SCREENSHOT_LINK_HERE)
 </details>
 
 <details>
@@ -226,6 +246,8 @@ The dataset models a typical e-commerce backend with separate tables for custome
   group by payment_type,year,month
   order by payment_type,year,month;
   ```
+  
+  ![Payment Type Distribution and Trends](PASTE_SCREENSHOT_LINK_HERE)
 </details>
 
 ---
@@ -242,11 +264,3 @@ The dataset models a typical e-commerce backend with separate tables for custome
 * The busiest hours for placing orders were **4 PM** (6,675 orders), **11 AM** (6,578 orders), and **2 PM** (6,569 orders) — customers are most active in the afternoon.
 
 ### 📌 4. Customer Geographic Concentration
-* **São Paulo (SP)** is by far the largest customer base with 15,540 unique customers, followed by Rio de Janeiro (RJ) with 6,882 and Belo Horizonte (MG) with 2,773.
-* Customers who ordered in 2018 were overwhelmingly based in São Paulo, SP, confirming SP as the core, most consistent market.
-
-### 📌 5. Delivery Performance
-* Actual delivery times vary widely (e.g., 30–36 days for some orders).
-* The gap between actual and estimated delivery dates shows mixed reliability — some orders arrived well ahead of schedule (up to 12 days early) while others were significantly late (up to 29 days late), signaling inconsistent logistics performance.
-* **São Paulo (SP)** has the fastest average delivery time among states, at roughly 8 days 16 hours.
-
