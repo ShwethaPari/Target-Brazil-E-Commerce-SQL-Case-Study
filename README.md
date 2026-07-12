@@ -66,7 +66,8 @@ The dataset models a typical e-commerce backend with separate tables for custome
   limit 5;
   ```
   
-  ![Initial Data Exploration](PASTE_SCREENSHOT_LINK_HERE)
+  ![Initial Data Exploration](<img width="1476" height="642" alt="Screenshot 2026-07-12 161959" src="https://github.com/user-attachments/assets/adf0ec0a-a7f1-4f29-8870-eb0a09ed200f" />
+)
 </details>
 
 <details>
