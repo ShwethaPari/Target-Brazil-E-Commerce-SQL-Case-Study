@@ -47,18 +47,156 @@ The dataset models a typical e-commerce backend with separate tables for custome
 
 ---
 
-## 🔍 Analysis Performed
-1. Initial data exploration of customers and geolocation tables
-2. Time range of order activity (min/max order timestamps)
-3. Cities and states of customers who ordered in a given year
-4. Peak order hours (extracting hour from purchase timestamp)
-5. Month-on-month order volume trend
-6. Distribution of customers across Brazilian states
-7. Delivery time vs. estimated delivery date (on-time vs. late analysis)
-8. Top/bottom states by average freight value
-9. Top/bottom states by average delivery time
-10. Order count by number of payment installments
-11. Order count by payment type, broken down by year and month
+## 🔍 Analysis Performed & SQL Queries
+*Click on any business question below to view the SQL implementation query logic and placeholder for your screenshot.*
+
+<details>
+  <summary><b>1. Initial data exploration of customers and geolocation tables</b></summary>
+  <br>
+  
+  ```sql
+  -- Exploration of customers table
+  select * 
+  from `target-500311.Target_Sql.customers` 
+  limit 10;
+
+  -- Exploration of geolocation table
+  select * 
+  from `target-500311.Target_Sql.geolocation` 
+  limit 5;
+  ```
+  *(Drop your screenshot for Question 1 here)*
+</details>
+
+<details>
+  <summary><b>2. Time range of order activity (min/max order timestamps)</b></summary>
+  <br>
+  
+  ```sql
+  -- Get the time range between which the orders were placed
+  select 
+    min(order_purchase_timestamp) as start_time,
+    max(order_purchase_timestamp) as end_time
+  from `target-500311.Target_Sql.orders`;
+  ```
+  *(Drop your screenshot for Question 2 here)*
+</details>
+
+<details>
+  <summary><b>3. Cities and states of customers who ordered in a given year</b></summary>
+  <br>
+  
+  ```sql
+  -- Count the Cities & States of customers who ordered during the given period.
+  SELECT 
+    c.customer_city, 
+    c.customer_state
+  FROM `target-500311.Target_Sql.orders` as o
+  JOIN `target-500311.Target_Sql.customers` as c
+    ON o.customer_id = c.customer_id
+  WHERE EXTRACT(YEAR FROM o.order_purchase_timestamp) = 2018;
+  ```
+  *(Drop your screenshot for Question 3 here)*
+</details>
+
+<details>
+  <summary><b>4. Peak order hours (extracting hour from purchase timestamp)</b></summary>
+  <br>
+  
+  ```sql
+  SELECT 
+    EXTRACT(hour FROM order_purchase_timestamp) as time,
+    COUNT(order_id) as order_num
+  FROM `target-500311.Target_Sql.orders`
+  GROUP BY EXTRACT(hour from order_purchase_timestamp)
+  ORDER BY order_num desc;
+  ```
+  *(Drop your screenshot for Question 4 here)*
+</details>
+
+<details>
+  <summary><b>5. Month-on-month order volume trend</b></summary>
+  <br>
+  
+  ```sql
+  -- Is there a growing trend in the no. of orders placed over the past years?
+  SELECT 
+    EXTRACT(MONTH FROM order_purchase_timestamp) as month,
+    COUNT(order_id) as order_num
+  FROM `target-500311.Target_Sql.orders`
+  GROUP BY EXTRACT(month from order_purchase_timestamp)
+  ORDER BY order_num desc;
+
+  -- Get the month on month no. of orders broken down by chronological year.
+  SELECT 
+    EXTRACT(MONTH FROM order_purchase_timestamp) as month,
+    EXTRACT(YEAR FROM order_purchase_timestamp) as year,
+    COUNT(*) as num_orders
+  FROM `target-500311.Target_Sql.orders`
+  GROUP BY year, month;
+  ```
+  *(Drop your screenshot for Question 5 here)*
+</details>
+
+<details>
+  <summary><b>6. Distribution of customers across Brazilian states</b></summary>
+  <br>
+  
+  ```sql
+  -- Paste your SQL query here
+  ```
+  *(Drop your screenshot for Question 6 here)*
+</details>
+
+<details>
+  <summary><b>7. Delivery time vs. estimated delivery date (on-time vs. late analysis)</b></summary>
+  <br>
+  
+  ```sql
+  -- Paste your SQL query here
+  ```
+  *(Drop your screenshot for Question 7 here)*
+</details>
+
+<details>
+  <summary><b>8. Top/bottom states by average freight value</b></summary>
+  <br>
+  
+  ```sql
+  -- Paste your SQL query here
+  ```
+  *(Drop your screenshot for Question 8 here)*
+</details>
+
+<details>
+  <summary><b>9. Top/bottom states by average delivery time</b></summary>
+  <br>
+  
+  ```sql
+  -- Paste your SQL query here
+  ```
+  *(Drop your screenshot for Question 9 here)*
+</details>
+
+<details>
+  <summary><b>10. Order count by number of payment installments</b></summary>
+  <br>
+  
+  ```sql
+  -- Paste your SQL query here
+  ```
+  *(Drop your screenshot for Question 10 here)*
+</details>
+
+<details>
+  <summary><b>11. Order count by payment type, broken down by year and month</b></summary>
+  <br>
+  
+  ```sql
+  -- Paste your SQL query here
+  ```
+  *(Drop your screenshot for Question 11 here)*
+</details>
 
 ---
 
