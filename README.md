@@ -119,7 +119,8 @@ The dataset models a typical e-commerce backend with separate tables for custome
   ORDER BY order_num desc;
   ```
   
-  ![Peak Order Hours](PASTE_SCREENSHOT_LINK_HERE)
+  <img width="1445" height="510" alt="Screenshot 2026-07-12 162618" src="https://github.com/user-attachments/assets/742f50a3-8aa6-4e58-8fb6-e0a8f4fdd47e" />
+
 </details>
 
 <details>
@@ -144,7 +145,11 @@ The dataset models a typical e-commerce backend with separate tables for custome
   GROUP BY year, month;
   ```
   
-  ![Month on Month Growth Trend](PASTE_SCREENSHOT_LINK_HERE)
+  <img width="1467" height="511" alt="Screenshot 2026-07-12 162345" src="https://github.com/user-attachments/assets/4de77126-4b2f-4ed6-b57d-ad2da6d90381" />
+
+  <img width="1457" height="520" alt="Screenshot 2026-07-12 162800" src="https://github.com/user-attachments/assets/29429485-a808-40e7-895d-9e12023e942e" />
+
+
 </details>
 
 <details>
@@ -160,7 +165,8 @@ The dataset models a typical e-commerce backend with separate tables for custome
   ORDER BY customer_count DESC;
   ```
   
-  ![Customer Distribution Across States](PASTE_SCREENSHOT_LINK_HERE)
+  <img width="1468" height="513" alt="Screenshot 2026-07-12 162835" src="https://github.com/user-attachments/assets/af13a639-63ec-4c93-b726-f8c5803d564f" />
+
 </details>
 
 <details>
@@ -175,7 +181,8 @@ The dataset models a typical e-commerce backend with separate tables for custome
   from `target-500311.Target_Sql.orders`;
   ```
   
-  ![Delivery Performance Metrics](PASTE_SCREENSHOT_LINK_HERE)
+  <img width="1471" height="533" alt="Screenshot 2026-07-12 162943" src="https://github.com/user-attachments/assets/7c30d29b-7588-4c2e-b792-8e579e99bd8f" />
+
 </details>
 
 <details>
@@ -195,7 +202,8 @@ The dataset models a typical e-commerce backend with separate tables for custome
   order by avg_freight_value desc;
   ```
   
-  ![Average Freight Value by Region](PASTE_SCREENSHOT_LINK_HERE)
+  <img width="1455" height="525" alt="Screenshot 2026-07-12 163034" src="https://github.com/user-attachments/assets/ccada372-ce22-437c-bbf0-1e4ac0ebdd6b" />
+
 </details>
 
 <details>
@@ -216,7 +224,8 @@ The dataset models a typical e-commerce backend with separate tables for custome
   order by avg_time_to_delivery asc;
   ```
   
-  ![Average Delivery Time Analysis](PASTE_SCREENSHOT_LINK_HERE)
+  <img width="1456" height="485" alt="Screenshot 2026-07-12 163315" src="https://github.com/user-attachments/assets/fe36f08a-5dcd-4745-bdcd-c63883c260d3" />
+
 </details>
 
 <details>
@@ -231,7 +240,8 @@ The dataset models a typical e-commerce backend with separate tables for custome
   group by payment_installments;
   ```
   
-  ![Order Count by Payment Installments](PASTE_SCREENSHOT_LINK_HERE)
+  <img width="1475" height="515" alt="Screenshot 2026-07-12 163108" src="https://github.com/user-attachments/assets/607dea17-838f-4fbc-bf00-5a66672e5c16" />
+
 </details>
 
 <details>
@@ -251,7 +261,8 @@ The dataset models a typical e-commerce backend with separate tables for custome
   order by payment_type,year,month;
   ```
   
-  ![Payment Type Distribution and Trends](PASTE_SCREENSHOT_LINK_HERE)
+  <img width="1473" height="548" alt="Screenshot 2026-07-12 163215" src="https://github.com/user-attachments/assets/f1ddfeff-180c-4117-8a76-57c1f3caabd1" />
+
 </details>
 
 ---
