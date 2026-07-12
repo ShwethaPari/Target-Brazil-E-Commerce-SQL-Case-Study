@@ -101,9 +101,8 @@ The dataset models a typical e-commerce backend with separate tables for custome
     ON o.customer_id = c.customer_id
   WHERE EXTRACT(YEAR FROM o.order_purchase_timestamp) = 2018;
   ```
-  
 
-<img width="1458" height="510" alt="Screenshot 2026-07-12 162304" src="https://github.com/user-attachments/assets/c9c72c87-0158-4a2b-a635-b63c03f8f546" />
+  <img width="1458" height="510" alt="Screenshot 2026-07-12 162304" src="https://github.com/user-attachments/assets/c9c72c87-0158-4a2b-a635-b63c03f8f546" />
 
 </details>
 
