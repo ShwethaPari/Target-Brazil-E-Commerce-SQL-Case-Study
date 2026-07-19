@@ -270,12 +270,91 @@ The dataset models a typical e-commerce backend with separate tables for custome
 ## 📈 Key Findings
 
 ### 📌 1. Time Range of Operations
-* Orders were placed between **04 Sep 2016 and 17 Oct 2018** — roughly a 2-year operating window.
+Orders were placed between **04 Sep 2016** and **17 Oct 2018**, spanning approximately **2 years** of platform operations.
+
+---
 
 ### 📌 2. Order Growth Trend
-* Order volume was near zero in the first month (Sep 2016: 4 orders) and ramped up sharply the following month (Oct 2016: 324 orders), indicating the platform was in an early growth/launch phase during late 2016.
+- The platform started with only **4 orders** in **September 2016**.
+- Orders increased sharply to **324** in **October 2016**.
+- Activity then dropped again (**1 order** in **December 2016**), suggesting an initial **pilot/testing phase**.
+- Consistent order growth began afterward, indicating the platform's transition into regular business operations.
+
+---
 
 ### 📌 3. Peak Ordering Hours
-* The busiest hours for placing orders were **4 PM** (6,675 orders), **11 AM** (6,578 orders), and **2 PM** (6,569 orders) — customers are most active in the afternoon.
+Customers were most active during the afternoon:
 
-### 📌 4. Customer Geographic Concentration
+| Rank | Hour | Orders |
+|------|------|-------:|
+| 🥇 1 | **4 PM** | **6,675** |
+| 🥈 2 | **11 AM** | **6,578** |
+| 🥉 3 | **2 PM** | **6,569** |
+
+**Business Insight:**  
+Customer purchasing activity is highest between **11 AM and 4 PM**, making this an ideal window for promotions, flash sales, and marketing campaigns.
+
+---
+
+### 📌 4. Seasonal Order Concentration
+Highest order volumes (aggregated across all years):
+
+| Month | Orders |
+|--------|-------:|
+| **August** | **10,843** |
+| **May** | **10,573** |
+| **July** | **10,318** |
+
+**Business Insight:**  
+Demand peaks during the **mid-year period**, rather than the traditional holiday season (November–December).
+
+---
+
+### 📌 5. Customer Geographic Concentration
+Top customer locations:
+
+| City / State | Customers |
+|---------------|----------:|
+| **São Paulo (SP)** | **15,540** |
+| **Rio de Janeiro (RJ)** | **6,882** |
+| **Belo Horizonte (MG)** | **2,773** |
+
+**Business Insight:**  
+Most customers are concentrated in Brazil's **Southeast region**, reflecting higher population density and stronger market demand.
+
+---
+
+### 📌 6. Average Freight Cost by State
+States with the highest average freight costs:
+
+| State | Avg. Freight Cost |
+|--------|------------------:|
+| **RR (Roraima)** | **R$42.98** |
+| **PB (Paraíba)** | **R$42.72** |
+| **RO (Rondônia)** | **R$41.07** |
+
+**Business Insight:**  
+Remote and northern states incur higher shipping costs due to longer transportation distances from major distribution centers.
+
+---
+
+### 📌 7. Payment Installment Preference
+
+| Installments | Orders |
+|--------------|-------:|
+| **1 Installment** | **49,060** |
+| **2 Installments** | **12,389** |
+
+**Business Insight:**  
+Most customers prefer **paying in full**, while installment payments are considerably less common.
+
+---
+
+## 📊 Overall Business Insights
+
+- 📈 The platform experienced rapid growth after an initial testing period.
+- ⏰ Customer purchases are concentrated during **late morning to afternoon**.
+- 🌤️ Demand peaks during the **mid-year months (May–August)**.
+- 📍 The customer base is heavily concentrated in **Southeast Brazil**.
+- 🚚 Freight costs increase significantly for **remote northern states**.
+- 💳 Most customers prefer **single-installment payments**, indicating strong upfront purchasing behavior.
