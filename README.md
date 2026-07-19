@@ -1,4 +1,4 @@
-# 📊 Target Brazil E-Commerce Data Analysis (SQL)
+# 📊 E-Commerce Data Analytics Project: A Target-Style Case Study Using Brazilian Marketplace Data
 
 ## 📝 Overview
 This project is an exploratory SQL analysis of a target e-commerce dataset, performed entirely in **Google BigQuery**. The goal was to practice writing real-world analytical SQL queries and extract business insights around customer behavior, order trends, delivery performance, and payments — the kind of questions a data analyst would be asked to answer for an e-commerce business. 
